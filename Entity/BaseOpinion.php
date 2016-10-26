@@ -2,11 +2,15 @@
 
 namespace Prism\PollBundle\Entity;
 
+use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+
 /**
  * Prism\PollBundle\Entity\BaseOpinion
  */
 abstract class BaseOpinion
 {
+    use Timestampable;
+    
     /**
      * @var integer $id
      */

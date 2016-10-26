@@ -16,13 +16,13 @@ Prism\PollBundle\Entity\BaseOpinion:
     ordering:
       type: integer
       nullable: true
-    createdAt:
-      type: datetime
-      gedmo:
-        timestampable:
-          on: create
-    updatedAt:
-      type: datetime
-      gedmo:
-        timestampable:
-          on: update
+#    createdAt:
+#      type: datetime
+#      gedmo:
+#        timestampable:
+#          on: create
+#    updatedAt:
+#      type: datetime
+#      gedmo:
+#        timestampable:
+#          on: update

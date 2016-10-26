@@ -2,11 +2,16 @@
 
 namespace Prism\PollBundle\Entity;
 
+use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
+use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
+
 /**
  * Prism\PollBundle\Entity\BasePoll
  */
 abstract class BasePoll
 {
+    use Sluggable, Timestampable;
+    
     /**
      * @var integer $id
      */
@@ -58,6 +63,16 @@ abstract class BasePoll
     public function __construct()
     {
         $this->opinions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * KnpDoctrineBehaviors Sluggable
+     *
+     * @return array
+     */
+    public function getSluggableFields()
+    {
+        return ['name'];
     }
 
     /**

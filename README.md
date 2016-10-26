@@ -2,8 +2,9 @@ A simple poll bundle for symfony2.
 
 ---
 
-This version is for Symfony 2.4.x projects.
+This version is for Symfony 3.x projects.
 
+For Symfony 2.4.x projects, you must use a [1.x](https://github.com/emiliemarchand/PrismPollBundle) release of this bundle.
 For Symfony 2.0.x projects, you must use a [1.x](https://github.com/emiliemarchand/PrismPollBundle/tree/symfony-2.0.x) release of this bundle.
 
 ---
@@ -28,7 +29,7 @@ For Symfony 2.0.x projects, you must use a [1.x](https://github.com/emiliemarcha
 **TODO:**
 
 - Functional tests
-- Rewrite "Overriding the bundle" documentation for symfony 2.4.x
+- Rewrite "Overriding the bundle" documentation for symfony 3.x
 
 ## Installation
 
@@ -47,13 +48,13 @@ $ composer update
 
 **3.** Register the bundle in ``app/AppKernel.php``:
 
-(You also need to add StofDoctrineExtensionsBundle for the timestampable and sluggable features)
+(You also need to add KnpDoctrineBehaviorsBundle for the timestampable and sluggable features)
 
 ``` php
 $bundles = array(
     // ...
     new Prism\PollBundle\PrismPollBundle(),
-    new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+    new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
 );
 ```
 
@@ -74,11 +75,9 @@ PrismPollBundle_frontend:
 
 ``` yaml
 # app/config/config.yml
-stof_doctrine_extensions:
-    orm:
-        default:
-            timestampable: true
-            sluggable: true
+knp_doctrine_behaviors:
+    sluggable:      true
+    timestampable:  true
 ```
 
 **6.** Generate the tables:
@@ -92,6 +91,6 @@ This will create the PrismPoll and PrismPollOpinion tables
 
 ## Overriding the bundle
 
-TODO: rewrite the documentation for Symfony 2.4.x projects.
+TODO: rewrite the documentation for Symfony 3.x projects.
 
 You can still get the general idea by reading the [documentation](https://github.com/emiliemarchand/PrismPollBundle/blob/symfony-2.0.x/Resources/doc/overriding.md) for Symfony 2.0.x projects.

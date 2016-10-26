@@ -4,7 +4,8 @@ namespace Prism\PollBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 /**
  * PollType
@@ -23,8 +24,8 @@ class PollType extends AbstractType
             ->add('name')
             ->add('published')
             ->add('closed')
-            ->add('opinions', 'collection', array(
-                'type' => new $options['opinion_form'],
+            ->add('opinions', CollectionType::class, array(
+                'entry_type' => $options['opinion_form'],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false
@@ -36,7 +37,7 @@ class PollType extends AbstractType
      *
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'poll';
     }
@@ -44,13 +45,13 @@ class PollType extends AbstractType
     /**
      * Set Default Options
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'opinion_form' => 'Prism\PollBundle\Form\OpinionType',
-            'cascade_validation' => true
+            'constraints' => new \Symfony\Component\Validator\Constraints\Valid(),
         ));
     }
 }

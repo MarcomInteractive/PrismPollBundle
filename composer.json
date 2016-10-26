@@ -1,19 +1,23 @@
 {
     "name": "prism/poll-bundle",
     "type": "symfony-bundle",
-    "description": "A simple poll bundle for symfony2",
+    "description": "A simple poll bundle for symfony3",
     "keywords": ["poll", "question", "vote"],
-    "homepage": "https://github.com/emiliemarchand/PrismPollBundle",
+    "homepage": "https://github.com/MarcomInteractive/PrismPollBundle",
     "license": "MIT",
     "authors": [
         {
             "name": "Emilie Marchand",
             "email": "emilie.marchand@gmail.com"
+        },
+        {
+            "name": "Interaktywni.pro",
+            "email": "global@interaktywni.pro"
         }
     ],
     "require": {
         "symfony/symfony": "~3.0",
-        "stof/doctrine-extensions-bundle": "~1.1@dev"
+        "knplabs/doctrine-behaviors": "~1.1"
     },
     "autoload": {
         "psr-0": { "Prism\\PollBundle": "" }
