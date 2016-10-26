@@ -23,11 +23,6 @@ abstract class BasePoll
     protected $name;
 
     /**
-     * @var string
-     */
-    protected $slug;
-
-    /**
      * @var boolean $published
      */
     protected $published;
@@ -36,16 +31,6 @@ abstract class BasePoll
      * @var boolean $closed
      */
     protected $closed;
-
-    /**
-     * @var \DateTime
-     */
-    protected $createdAt;
-
-    /**
-     * @var \DateTime
-     */
-    protected $updatedAt;
 
     /**
      * @var \Prism\PollBundle\Entity\BaseOpinion
@@ -110,30 +95,6 @@ abstract class BasePoll
     }
 
     /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return BasePoll
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
      * Set published
      *
      * @param boolean $published
@@ -179,54 +140,6 @@ abstract class BasePoll
     public function getClosed()
     {
         return $this->closed;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return BasePoll
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return BasePoll
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

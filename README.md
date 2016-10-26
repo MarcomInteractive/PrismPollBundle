@@ -1,10 +1,11 @@
-A simple poll bundle for symfony2.
+A simple poll bundle for symfony3.
 
 ---
 
 This version is for Symfony 3.x projects.
 
-For Symfony 2.4.x projects, you must use a [1.x](https://github.com/emiliemarchand/PrismPollBundle) release of this bundle.
+For Symfony 2.4.x projects, you must use a [2.x](https://github.com/emiliemarchand/PrismPollBundle) release of this bundle.
+
 For Symfony 2.0.x projects, you must use a [1.x](https://github.com/emiliemarchand/PrismPollBundle/tree/symfony-2.0.x) release of this bundle.
 
 ---
