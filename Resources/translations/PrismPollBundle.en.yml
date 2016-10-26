@@ -1,0 +1,6 @@
+form:
+    poll:
+        published: 'Published'
+        closed: 'Closed'
+        name: 'Name'
+        opinions: 'Choices'

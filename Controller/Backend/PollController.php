@@ -10,6 +10,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class PollController extends Controller
 {
+    private $pollEntity;
+    private $pollEntityRepository;
+    private $pollForm;
+    private $opinionForm;
+    
     /**
      * Init
      */
@@ -58,11 +63,11 @@ class PollController extends Controller
             $poll = new $this->pollEntity;
         }
 
-        $form = $this->createForm(new $this->pollForm, $poll, array('opinion_form' => $this->opinionForm));
+        $form = $this->createForm($this->pollForm, $poll, array('opinion_form' => $this->opinionForm));
 
         if ('POST' == $request->getMethod()) {
 
-            $form->submit($request);
+            $form->handleRequest($request);
 
             if ($form->isValid()) {
 

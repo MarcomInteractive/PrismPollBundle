@@ -1,5 +1,5 @@
 {% extends 'PrismPollBundle:Backend:layout.html.twig' %}
-{% form_theme form 'PrismPollBundle:Backend:form_custom_layout.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 
 {% block content %}
     <div id="edit_poll">
@@ -15,13 +15,13 @@
             </div>
         {% endif %}
 
-        <form action="{{ path('PrismPollBundle_backend_poll_edit', {'pollId': poll.id }) }}" method="post" novalidate="novalidate" {{ form_enctype(form) }}>
+        <form action="{{ path('PrismPollBundle_backend_poll_edit', {'pollId': poll.id }) }}" method="post" novalidate="novalidate" enctype="multipart/form-data">
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.published) }}
+            {{ form_row(form.closed) }}
 
             <table>
-                {{ form_row(form.name) }}
-                {{ form_row(form.published) }}
-                {{ form_row(form.closed) }}
-
                 <tr>
                     <th>Choices:</th>
                     <td>
@@ -37,8 +37,9 @@
                     </td>
                 </tr>
 
-                {{ form_row(form._token) }}
             </table>
+
+            {{ form_rest(form) }}
 
             <div id="submit">
                 <input type="submit" value="Submit" />

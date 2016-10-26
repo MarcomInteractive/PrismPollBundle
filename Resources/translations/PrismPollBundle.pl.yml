@@ -1,0 +1,6 @@
+form:
+    poll:
+        published: 'Opublikowana'
+        closed: 'Zakończona'
+        name: 'Nazwa'
+        opinions: 'Opcje'
