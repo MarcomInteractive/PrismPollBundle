@@ -32,6 +32,11 @@ abstract class BaseOpinion
     protected $points;
 
     /**
+     * @var integer $score
+     */
+    protected $score;
+
+    /**
      * @var integer $ordering
      */
     protected $ordering;
@@ -45,6 +50,11 @@ abstract class BaseOpinion
      * @var float $votesPercentage
      */
     protected $votesPercentage;
+
+    /**
+     * @var boolean $absent
+     */
+    protected $absent;
 
 
     /**
@@ -130,6 +140,30 @@ abstract class BaseOpinion
     }
 
     /**
+     * Set score
+     *
+     * @param integer $score
+     *
+     * @return BaseOpinion
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return integer 
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
      * Set ordering
      *
      * @param integer $ordering
@@ -171,6 +205,30 @@ abstract class BaseOpinion
     public function getPoll()
     {
         return $this->poll;
+    }
+
+    /**
+     * Set absent
+     *
+     * @param boolean $absent
+     *
+     * @return BaseOpinion
+     */
+    public function setAbsent($absent)
+    {
+        $this->absent = $absent;
+
+        return $this;
+    }
+
+    /**
+     * Get absent
+     *
+     * @return boolean 
+     */
+    public function getAbsent()
+    {
+        return $this->absent;
     }
 
     /**

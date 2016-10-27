@@ -54,7 +54,6 @@ class PollType extends AbstractType
     {
         $resolver->setDefaults(array(
             'opinion_form' => 'Prism\PollBundle\Form\OpinionType',
-            'constraints' => new \Symfony\Component\Validator\Constraints\Valid(),
             'translation_domain' => 'PrismPollBundle'
         ));
     }

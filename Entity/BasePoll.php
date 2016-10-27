@@ -4,6 +4,7 @@ namespace Prism\PollBundle\Entity;
 
 use Knp\DoctrineBehaviors\Model\Timestampable\Timestampable;
 use Knp\DoctrineBehaviors\Model\Sluggable\Sluggable;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Prism\PollBundle\Entity\BasePoll
@@ -33,21 +34,26 @@ abstract class BasePoll
     protected $closed;
 
     /**
-     * @var \Prism\PollBundle\Entity\BaseOpinion
+     * @var ArrayCollection
      */
-    protected $opinions;
+    protected $questions;
 
     /**
-     * @var integer $totalVotes
+     * @var integer $pollVotes
      */
-    protected $totalVotes;
+    protected $pollVotes;
+
+    /**
+     * @var integer $pollScore
+     */
+    protected $pollScore;
 
     /**
      * __construct()
      */
     public function __construct()
     {
-        $this->opinions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->questions = new ArrayCollection();
     }
 
     /**
@@ -143,52 +149,100 @@ abstract class BasePoll
     }
 
     /**
-     * Add opinions
+     * Set pollVotes
      *
-     * @param \Prism\PollBundle\Entity\BaseOpinion $opinions
+     * @param integer $pollVotes
      *
      * @return BasePoll
      */
-    public function addOpinion(\Prism\PollBundle\Entity\BaseOpinion $opinions)
+    public function setPollVotes($pollVotes)
     {
-        $opinions->setPoll($this);
-        $this->opinions[] = $opinions;
+        $this->pollVotes = $pollVotes;
 
         return $this;
     }
 
     /**
-     * Remove opinions
+     * Get pollVotes
      *
-     * @param \Prism\PollBundle\Entity\BaseOpinion $opinions
+     * @return integer 
      */
-    public function removeOpinion(\Prism\PollBundle\Entity\BaseOpinion $opinions)
+    public function getPollVotes()
     {
-        $this->opinions->removeElement($opinions);
+        return $this->pollVotes;
     }
 
     /**
-     * Get opinions
+     * Set pollScore
+     *
+     * @param integer $pollScore
+     *
+     * @return BasePoll
+     */
+    public function setPollScore($pollScore)
+    {
+        $this->pollScore = $pollScore;
+
+        return $this;
+    }
+
+    /**
+     * Get pollScore
+     *
+     * @return integer 
+     */
+    public function getPollScore()
+    {
+        return $this->pollScore;
+    }
+
+    /**
+     * Add questions
+     *
+     * @param \Prism\PollBundle\Entity\BaseQuestion $questions
+     *
+     * @return BasePoll
+     */
+    public function addQuestion(\Prism\PollBundle\Entity\BaseQuestion $questions)
+    {
+        $questions->setPoll($this);
+        $this->questions[] = $questions;
+
+        return $this;
+    }
+
+    /**
+     * Remove questions
+     *
+     * @param \Prism\PollBundle\Entity\BaseQuestion $questions
+     */
+    public function removeQuestion(\Prism\PollBundle\Entity\BaseQuestion $questions)
+    {
+        $this->questions->removeElement($questions);
+    }
+
+    /**
+     * Get questions
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getOpinions()
+    public function getQuestions()
     {
-        return $this->opinions;
+        return $this->questions;
     }
 
     /**
-     * Set opinions
+     * Set questions
      *
-     * @param \Doctrine\Common\Collections\Collection $opinions
+     * @param \Doctrine\Common\Collections\Collection $questions
      */
-    public function setOpinions(\Doctrine\Common\Collections\Collection $opinions)
+    public function setQuestions(\Doctrine\Common\Collections\Collection $questions)
     {
-        foreach ($opinions as $opinion) {
-            $opinion->setPoll($this);
+        foreach ($questions as $question) {
+            $question->setPoll($this);
         }
 
-        $this->opinions = $opinions;
+        $this->questions = $questions;
     }
 
     /**
@@ -201,25 +255,5 @@ abstract class BasePoll
         }
 
         return 'New Poll';
-    }
-
-    /**
-     * Get the total number of votes
-     *
-     * @return int
-     */
-    public function getTotalVotes()
-    {
-        if ($this->totalVotes) {
-            return $this->totalVotes;
-        }
-
-        $this->totalVotes = 0;
-
-        foreach ($this->opinions as $opinion) {
-            $this->totalVotes += $opinion->getVotes();
-        }
-
-        return $this->totalVotes;
     }
 }

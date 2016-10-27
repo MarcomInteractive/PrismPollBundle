@@ -21,7 +21,7 @@
             {{ form_row(form.published) }}
             {{ form_row(form.closed) }}
 
-            <table>
+            <table class="table">
                 <tr>
                     <th>Choices:</th>
                     <td>
@@ -52,10 +52,13 @@
 {% endblock %}
 
 {% macro opinionPrototype(opinion) %}
-    <th>{{ form_label(opinion.name) }}</th>
     <td>
-        {{ form_widget(opinion.name) }} {{ form_widget(opinion.points) }}
+        {{ form_row(opinion.name) }}
+    </td>
+    <td>
+        {{ form_row(opinion.points) }}
+    </td>
+    <td>
         <a href="#" class="delete_choice">Delete Choice</a>
-        {{ form_errors(opinion.name) }} {{ form_errors(opinion.points) }}
     </td>
 {% endmacro %}

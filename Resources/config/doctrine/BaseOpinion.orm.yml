@@ -16,6 +16,9 @@ Prism\PollBundle\Entity\BaseOpinion:
     points:
       type: integer
       nullable: true
+    score:
+      type: integer
+      nullable: true
     ordering:
       type: integer
       nullable: true
