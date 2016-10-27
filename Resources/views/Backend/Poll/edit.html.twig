@@ -54,8 +54,8 @@
 {% macro opinionPrototype(opinion) %}
     <th>{{ form_label(opinion.name) }}</th>
     <td>
-        {{ form_widget(opinion.name) }}
+        {{ form_widget(opinion.name) }} {{ form_widget(opinion.points) }}
         <a href="#" class="delete_choice">Delete Choice</a>
-        {{ form_errors(opinion.name) }}
+        {{ form_errors(opinion.name) }} {{ form_errors(opinion.points) }}
     </td>
 {% endmacro %}

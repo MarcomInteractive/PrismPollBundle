@@ -27,6 +27,11 @@ abstract class BaseOpinion
     protected $votes;
 
     /**
+     * @var integer $votes
+     */
+    protected $points;
+
+    /**
      * @var integer $ordering
      */
     protected $ordering;
@@ -98,6 +103,30 @@ abstract class BaseOpinion
     public function getVotes()
     {
         return $this->votes;
+    }
+
+    /**
+     * Set points
+     *
+     * @param integer $points
+     *
+     * @return BaseOpinion
+     */
+    public function setPoints($points)
+    {
+        $this->points = $points;
+
+        return $this;
+    }
+
+    /**
+     * Get points
+     *
+     * @return integer 
+     */
+    public function getPoints()
+    {
+        return $this->points;
     }
 
     /**
