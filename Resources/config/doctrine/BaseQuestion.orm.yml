@@ -1,0 +1,24 @@
+Prism\PollBundle\Entity\BaseOpinion:
+  type: mappedSuperclass
+  fields:
+    id:
+      type: integer
+      id: true
+      generator:
+        strategy: AUTO
+    name:
+      type: string
+      length: 255
+      nullable: false
+  oneToMany:
+    features:
+      targetEntity: BaseOpinion
+      mappedBy: question
+  manyToOne:
+    product:
+      targetEntity: BasePoll
+      inversedBy: questions
+      joinColumn:
+        name: poll_id
+        referencedColumnName: id
+      

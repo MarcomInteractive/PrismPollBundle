@@ -1,0 +1,3 @@
+Prism\PollBundle\Entity\Question:
+  type: entity
+  table: PrismPoll__Question

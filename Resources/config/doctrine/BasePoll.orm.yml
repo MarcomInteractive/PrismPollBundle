@@ -10,27 +10,17 @@ Prism\PollBundle\Entity\BasePoll:
       type: string
       length: 255
       nullable: false
-#      gedmo:
-#        - sluggable
-#    slug:
-#      type: string
-#      length: 255
-#      nullable: false
-#      gedmo:
-#        slug:
-#          fields: [name]
-#          separator: -
     published:
       type: boolean
+      nullable: false
     closed:
       type: boolean
-#    createdAt:
-#      type: datetime
-#      gedmo:
-#        timestampable:
-#          on: create
-#    updatedAt:
-#      type: datetime
-#      gedmo:
-#        timestampable:
-#          on: update
+      nullable: false
+    pollSubmits:
+      type: integer
+      nullable: true
+  oneToMany:
+    questions:
+      targetEntity: BaseQuestion
+      mappedBy: poll
+      

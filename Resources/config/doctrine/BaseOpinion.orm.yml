@@ -22,13 +22,13 @@ Prism\PollBundle\Entity\BaseOpinion:
     ordering:
       type: integer
       nullable: true
-#    createdAt:
-#      type: datetime
-#      gedmo:
-#        timestampable:
-#          on: create
-#    updatedAt:
-#      type: datetime
-#      gedmo:
-#        timestampable:
-#          on: update
+    absent:
+      type: boolean
+      nullable: true
+  manyToOne:
+    product:
+      targetEntity: BaseQuestion
+      inversedBy: opinions
+      joinColumn:
+        name: question_id
+        referencedColumnName: id

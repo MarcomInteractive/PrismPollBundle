@@ -12,26 +12,37 @@ abstract class BaseQuestion
     use Timestampable;
     
     /**
+     * db
      * @var integer $id
      */
     protected $id;
 
     /**
+     * db
      * @var string $name
      */
     protected $name;
 
     /**
+     * db
      * @var \Prism\PollBundle\Entity\BaseOpinion
      */
     protected $opinions;
 
     /**
+     * db
+     * @var \Prism\PollBundle\Entity\BasePoll
+     */
+    protected $poll;
+
+    /**
+     * manualy
      * @var integer $questionVotes
      */
     protected $questionVotes;
 
     /**
+     * manualy
      * @var integer $questionScore
      */
     protected $questionScore;
@@ -55,6 +66,18 @@ abstract class BaseQuestion
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        if ($this->id && $this->name) {
+            return $this->name;
+        }
+
+        return 'New Question';
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -69,7 +92,7 @@ abstract class BaseQuestion
      *
      * @param string $name
      *
-     * @return BasePoll
+     * @return BaseQuestion
      */
     public function setName($name)
     {
@@ -93,7 +116,7 @@ abstract class BaseQuestion
      *
      * @param \Prism\PollBundle\Entity\BaseOpinion $opinions
      *
-     * @return BasePoll
+     * @return BaseQuestion
      */
     public function addOpinion(\Prism\PollBundle\Entity\BaseOpinion $opinions)
     {
@@ -127,6 +150,8 @@ abstract class BaseQuestion
      * Set opinions
      *
      * @param \Doctrine\Common\Collections\Collection $opinions
+     *
+     * @return BaseQuestion
      */
     public function setOpinions(\Doctrine\Common\Collections\Collection $opinions)
     {
@@ -135,18 +160,32 @@ abstract class BaseQuestion
         }
 
         $this->opinions = $opinions;
+        
+        return $this;
     }
 
     /**
-     * @return string
+     * Set poll
+     *
+     * @param \Prism\PollBundle\Entity\BasePoll $poll
+     *
+     * @return BaseQuestion
      */
-    public function __toString()
+    public function setPoll(\Prism\PollBundle\Entity\BasePoll $poll)
     {
-        if ($this->id && $this->name) {
-            return $this->name;
-        }
+        $this->poll = $poll;
+        
+        return $this;
+    }
 
-        return 'New Question';
+    /**
+     * Get poll
+     *
+     * @return \Prism\PollBundle\Entity\BasePoll
+     */
+    public function getPoll()
+    {
+        return $this->poll;
     }
 
     /**

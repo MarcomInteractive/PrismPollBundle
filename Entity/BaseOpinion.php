@@ -12,49 +12,59 @@ abstract class BaseOpinion
     use Timestampable;
     
     /**
+     * db
      * @var integer $id
      */
     protected $id;
 
     /**
+     * db
      * @var string $name
      */
     protected $name;
 
     /**
+     * db
      * @var integer $votes
      */
     protected $votes;
 
     /**
+     * db
      * @var integer $votes
      */
     protected $points;
 
     /**
+     * db
      * @var integer $score
      */
     protected $score;
 
     /**
+     * db
      * @var integer $ordering
      */
     protected $ordering;
 
     /**
-     * @var \Prism\PollBundle\Entity\BasePoll
+     * db
+     * @var \Prism\PollBundle\Entity\BaseQuestion
      */
-    protected $poll;
+    protected $question;
 
     /**
-     * @var float $votesPercentage
-     */
-    protected $votesPercentage;
-
-    /**
+     * db
      * @var boolean $absent
      */
     protected $absent;
+
+    
+    /**
+     * manualy
+     * @var float $votesPercentage
+     */
+    protected $votesPercentage;
 
 
     /**
@@ -188,23 +198,23 @@ abstract class BaseOpinion
     }
 
     /**
-     * Set poll
+     * Set question
      *
-     * @param \Prism\PollBundle\Entity\BasePoll $poll
+     * @param \Prism\PollBundle\Entity\BaseQuestion $question
      */
-    public function setPoll(\Prism\PollBundle\Entity\BasePoll $poll)
+    public function setQuestion(\Prism\PollBundle\Entity\BaseQuestion $question)
     {
-        $this->poll = $poll;
+        $this->question = $question;
     }
 
     /**
-     * Get poll
+     * Get question
      *
-     * @return \Prism\PollBundle\Entity\BasePoll
+     * @return \Prism\PollBundle\Entity\BaseQuestion
      */
-    public function getPoll()
+    public function getQuestion()
     {
-        return $this->poll;
+        return $this->question;
     }
 
     /**
@@ -254,8 +264,8 @@ abstract class BaseOpinion
             return $this->votesPercentage;
         }
 
-        if ($this->poll->getTotalVotes() > 0) {
-            return $this->votesPercentage = round($this->votes / $this->poll->getTotalVotes() * 100);
+        if ($this->question->getTotalVotes() > 0) {
+            return $this->votesPercentage = round($this->votes / $this->question->getTotalVotes() * 100);
         }
 
         return 0;

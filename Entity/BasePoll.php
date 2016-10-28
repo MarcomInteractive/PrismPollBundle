@@ -11,39 +11,47 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 abstract class BasePoll
 {
-    use Sluggable, Timestampable;
-    
+
+    use Sluggable,
+        Timestampable;
     /**
+     * db
      * @var integer $id
      */
     protected $id;
 
     /**
+     * db
      * @var string $name
      */
     protected $name;
 
     /**
+     * db
      * @var boolean $published
      */
     protected $published;
 
     /**
+     * db
      * @var boolean $closed
      */
     protected $closed;
 
     /**
+     * db
      * @var ArrayCollection
      */
     protected $questions;
 
     /**
-     * @var integer $pollVotes
+     * db
+     * @var integer $pollSubmits
      */
-    protected $pollVotes;
+    protected $pollSubmits;
 
     /**
+     * manualy
      * @var integer $pollScore
      */
     protected $pollScore;
@@ -149,27 +157,27 @@ abstract class BasePoll
     }
 
     /**
-     * Set pollVotes
+     * Set pollSubmits
      *
-     * @param integer $pollVotes
+     * @param integer $pollSubmits
      *
      * @return BasePoll
      */
-    public function setPollVotes($pollVotes)
+    public function setPollSubmits($pollSubmits)
     {
-        $this->pollVotes = $pollVotes;
+        $this->pollSubmits = $pollSubmits;
 
         return $this;
     }
 
     /**
-     * Get pollVotes
+     * Get pollSubmits
      *
      * @return integer 
      */
-    public function getPollVotes()
+    public function getPollSubmits()
     {
-        return $this->pollVotes;
+        return $this->pollSubmits;
     }
 
     /**
@@ -193,6 +201,16 @@ abstract class BasePoll
      */
     public function getPollScore()
     {
+        if ($this->pollScore) {
+            return $this->pollScore;
+        }
+
+        $this->pollScore = 0;
+
+        foreach ($this->questions as $question) {
+            $this->pollScore += $question->getTotalScore();
+        }
+
         return $this->pollScore;
     }
 
@@ -256,4 +274,5 @@ abstract class BasePoll
 
         return 'New Poll';
     }
+
 }
